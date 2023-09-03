@@ -47,38 +47,38 @@ My personal setup for building express api
 
 8. to allow public to access our api endpoint
 
-```js
-const cors = require("cors");
-app.use(cors(corsOptions?));
-```
+   ```js
+   const cors = require("cors");
+   app.use(cors(corsOptions?));
+   ```
 
 - in config/allowedOrigins
 
-  ```js
-  const allowedOrigins = ["http://localhost:3000", "https://www.google.com"];
-
-  module.exports = allowedOrigins;
-  ```
+     ```js
+     const allowedOrigins = ["http://localhost:3000", "https://www.google.com"];
+   
+     module.exports = allowedOrigins;
+     ```
 
 - in config/corsOptions.js
 
-  ```js
-  const allowedOrigins = require("./allowedOrigins");
-
-  const corsOptions = {
-    origin: (origin, callback) => {
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-    optionSuccessStatus: 200,
-  };
-
-  module.exports = corsOptions;
-  ```
+     ```js
+     const allowedOrigins = require("./allowedOrigins");
+   
+     const corsOptions = {
+       origin: (origin, callback) => {
+         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+           callback(null, true);
+         } else {
+           callback(new Error("Not allowed by CORS"));
+         }
+       },
+       credentials: true,
+       optionSuccessStatus: 200,
+     };
+   
+     module.exports = corsOptions;
+     ```
 
 7. to use custom middleware 'logger.js'
 
