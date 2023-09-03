@@ -14,11 +14,6 @@ My personal setup for building express api
 7. cookieParser
 8. cors
 
-9. create .gitignore and ignore
-   - node_modules
-   - logs
-10. create server.js
-
 #### dev depends
 
 1. nodemon
