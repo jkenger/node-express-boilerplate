@@ -13,6 +13,8 @@ My personal setup for building express api
 6. morgan
 7. cookieParser
 8. cors
+9. jwt
+10. bcrypt
 
 #### dev depends
 
