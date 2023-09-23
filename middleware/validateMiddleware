@@ -24,3 +24,14 @@ export const validateJob = withValidationErrors([
   //   .withMessage("Invalid job status"),
   // body("jobType").isIn(Object.values(JobType)).withMessage("Invalid job type"),
 ]);
+
+// id param validator
+export const validateIdParam = withValidationErrors([
+  param("id").custom(async (value) => {
+    const isValid = mongoose.Types.ObjectId.isValid(value);
+
+    if (!isValid) throw new BadRequestError("Invalid MongoDB id");
+    const job = await Job.findById(value);
+    if (!job) throw new NotFoundError("Job not found");
+  }),
+]);
